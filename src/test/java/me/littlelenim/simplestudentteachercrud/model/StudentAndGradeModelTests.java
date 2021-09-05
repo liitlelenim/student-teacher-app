@@ -1,5 +1,7 @@
 package me.littlelenim.simplestudentteachercrud.model;
 
+import me.littlelenim.simplestudentteachercrud.dto.GradeDTO;
+import me.littlelenim.simplestudentteachercrud.dto.StudentDTO;
 import me.littlelenim.simplestudentteachercrud.repository.GradeRepository;
 import me.littlelenim.simplestudentteachercrud.repository.StudentRepository;
 import org.junit.jupiter.api.AfterAll;
@@ -18,7 +20,7 @@ public class StudentAndGradeModelTests {
     private GradeRepository gradeRepository;
 
     @Test
-    public void studentModelTest(){
+    public void studentAndGradeModelTest(){
         Student testStudent = new Student("John", "Smith");
         Assertions.assertNotNull(testStudent,"Created student should not be null!");
         studentRepository.save(testStudent);
@@ -31,6 +33,16 @@ public class StudentAndGradeModelTests {
                 "after this operation");
 
         System.out.println("testStudent = " + testStudent);
+    }
+    @Test
+    public void studentAndGradeDTOTest(){
+        StudentDTO testStudentDTO = new StudentDTO("John","Smith");
+        Student testStudent = new Student(testStudentDTO);
+        Assertions.assertNotNull(testStudent,"Student created from dto should not be null!");
+
+        GradeDTO testGradeDTO = new GradeDTO(5,2);
+        Grade testGrade = new Grade(testGradeDTO);
+        Assertions.assertNotNull(testGradeDTO,"Grade created from dto should not be null!");
     }
     @AfterEach
     public void clearStudentRepository(){
