@@ -10,7 +10,6 @@ import java.util.List;
 @Entity
 @Table(name = "student")
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class Student
 {
@@ -40,4 +39,10 @@ public class Student
             referencedColumnName = "id"
     )
     private List<Grade> grades;
+
+    public Student(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
 }

@@ -11,7 +11,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "grade")
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class Grade {
 
@@ -36,4 +35,10 @@ public class Grade {
 
     @Column(name = "description")
     private String description;
+
+    public Grade(int value, int weight, String description) {
+        this.value = value;
+        this.weight = weight;
+        this.description = description;
+    }
 }
