@@ -3,6 +3,7 @@ package me.littlelenim.simplestudentteachercrud.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import me.littlelenim.simplestudentteachercrud.dto.StudentDTO;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -44,6 +45,10 @@ public class Student
     public Student(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+    public Student(StudentDTO dto) {
+        this.firstName = dto.getFirstName();
+        this.lastName = dto.getLastName();
     }
     public void addGrade(Grade grade){
         if(grades == null){

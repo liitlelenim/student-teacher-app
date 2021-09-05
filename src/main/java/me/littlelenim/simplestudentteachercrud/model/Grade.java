@@ -4,6 +4,7 @@ package me.littlelenim.simplestudentteachercrud.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import me.littlelenim.simplestudentteachercrud.dto.GradeDTO;
 
 import javax.persistence.*;
 
@@ -41,4 +42,10 @@ public class Grade {
         this.weight = weight;
         this.description = description;
     }
+    public Grade(GradeDTO dto) {
+        this.value = dto.getValue();
+        this.weight = dto.getWeight();
+        this.description = dto.getDescription();
+    }
+
 }
