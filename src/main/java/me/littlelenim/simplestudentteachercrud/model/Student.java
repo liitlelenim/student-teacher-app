@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -43,6 +44,12 @@ public class Student
     public Student(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+    public void addGrade(Grade grade){
+        if(grades == null){
+            grades = new ArrayList<Grade>();
+        }
+        grades.add(grade);
     }
 
 }
