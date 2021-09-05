@@ -2,6 +2,8 @@ package me.littlelenim.simplestudentteachercrud.model;
 
 import me.littlelenim.simplestudentteachercrud.repository.GradeRepository;
 import me.littlelenim.simplestudentteachercrud.repository.StudentRepository;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +31,10 @@ public class StudentAndGradeModelTests {
                 "after this operation");
 
         System.out.println("testStudent = " + testStudent);
+    }
+    @AfterEach
+    public void clearStudentRepository(){
+        studentRepository.deleteAll();
+        studentRepository.flush();
     }
 }
