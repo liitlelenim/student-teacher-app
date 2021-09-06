@@ -10,8 +10,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GradeDTO {
-    private int value;
-    private int weight;
+    private int value=-1;
+    private int weight=-1;
     private String description;
 
     public GradeDTO(int value, int weight) {
