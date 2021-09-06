@@ -3,6 +3,7 @@ package me.littlelenim.simplestudentteachercrud.service;
 import lombok.AllArgsConstructor;
 import me.littlelenim.simplestudentteachercrud.dto.GradeDTO;
 import me.littlelenim.simplestudentteachercrud.dto.StudentDTO;
+import me.littlelenim.simplestudentteachercrud.exception.InvalidIdException;
 import me.littlelenim.simplestudentteachercrud.model.Grade;
 import me.littlelenim.simplestudentteachercrud.model.Student;
 import me.littlelenim.simplestudentteachercrud.repository.GradeRepository;
@@ -38,7 +39,7 @@ public class StudentService {
     }
     public Student getStudentById(Long studentId){
         return studentRepository.findById(studentId).orElseThrow(()->{
-            throw new IllegalArgumentException("There's no student with id: "+studentId+".");
+            throw new InvalidIdException("There's no student with id: "+studentId+".");
         });
     }
 }
