@@ -21,9 +21,7 @@ public class GradeService {
 
     @Transactional
     public void patchGrade(Long id, GradeDTO dto) {
-        Grade grade = gradeRepository.findById(id).orElseThrow(() -> {
-            throw new InvalidIdException("There's no grade with id: " + id + ".");
-        });
+        Grade grade = getGradeById(id);
 
         if (dto.getValue() != -1) {
             grade.setValue(dto.getValue());
@@ -34,6 +32,12 @@ public class GradeService {
         if (dto.getDescription().length() != 0) {
             grade.setDescription(dto.getDescription());
         }
+    }
+    @Transactional
+    public Grade getGradeById(Long id){
+        return gradeRepository.findById(id).orElseThrow(() -> {
+            throw new InvalidIdException("There's no grade with id: " + id + ".");
+        });
     }
 
 }
