@@ -32,9 +32,8 @@ public class Student
     @Column(name = "last_name")
     private String lastName;
     @OneToMany(
-            fetch = FetchType.EAGER,
+            fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
-
     )
     @JoinColumn(
             name = "grades_id",
@@ -52,7 +51,7 @@ public class Student
     }
     public void addGrade(Grade grade){
         if(grades == null){
-            grades = new ArrayList<Grade>();
+            grades = new ArrayList<>();
         }
         grades.add(grade);
     }
