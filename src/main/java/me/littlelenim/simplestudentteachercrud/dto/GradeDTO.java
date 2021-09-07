@@ -12,7 +12,7 @@ import lombok.Setter;
 public class GradeDTO {
     private int value=-1;
     private int weight=-1;
-    private String description;
+    private String description="";
 
     public GradeDTO(int value, int weight) {
         this.value = value;
