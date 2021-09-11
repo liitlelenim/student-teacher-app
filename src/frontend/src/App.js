@@ -1,10 +1,6 @@
 
 function App() {
-  return (
-    <div>
-      Hello react!
-    </div>
-  );
+  return <div></div>;
 }
 
 export default App;
