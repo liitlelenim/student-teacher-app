@@ -1,4 +1,5 @@
 import {Table} from "react-bootstrap";
+import {StudentTableEntry} from "./student-table-entry/StudentTableEntry";
 
 const StudentTable = () => {
     return (
@@ -16,9 +17,6 @@ const StudentTable = () => {
             </tr>
             </thead>
             <tbody>
-            <tr>
-
-            </tr>
             </tbody>
         </Table>
     )
