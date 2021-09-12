@@ -1,4 +1,4 @@
-import {Grade} from "./grade/Grade";
+import {Grade} from "./grade/Grade.jsx"
 
 const StudentTableEntry = ({student}) =>{
     return <tr>
@@ -14,7 +14,8 @@ const StudentTableEntry = ({student}) =>{
         <td>
             {student.grades.map(grade =>
             <Grade
-            grade={grade}/>)}
+            grade={grade}
+            key={grade.id}/>)}
         </td>
 
     </tr>;

@@ -7,6 +7,7 @@ import me.littlelenim.simplestudentteachercrud.service.GradeService;
 import me.littlelenim.simplestudentteachercrud.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 @AllArgsConstructor
