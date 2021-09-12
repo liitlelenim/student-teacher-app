@@ -14,7 +14,7 @@ const Grade = ({grade}) =>{
         </Popover>
     )
 
-    return <OverlayTrigger trigger={"hover"} placement={"bottom"} overlay={descriptionPopover} >
+    return <OverlayTrigger trigger={['hover', 'focus']} placement={"bottom"} overlay={descriptionPopover} >
         <div className={"grade"}>5</div>
     </OverlayTrigger>
 }
