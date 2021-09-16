@@ -12,7 +12,6 @@ const StudentTable = () => {
 
 
     useEffect(() => {
-            console.log(GET_ALL_STUDENTS_ENDPOINT);
             fetch(GET_ALL_STUDENTS_ENDPOINT, {
                     method: 'GET',
                     headers: {
@@ -28,7 +27,7 @@ const StudentTable = () => {
                     console.error(err);
                 });
         }
-        , [])
+        , [GET_ALL_STUDENTS_ENDPOINT])
 
     return (
         <Table
