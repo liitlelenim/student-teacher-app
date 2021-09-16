@@ -1,4 +1,5 @@
 import {Grade} from "./grade/Grade.jsx"
+import {AddGradeButton} from "./add-grade-button/AddGradeButton";
 
 const StudentTableEntry = ({student}) =>{
     return <tr>
@@ -16,6 +17,7 @@ const StudentTableEntry = ({student}) =>{
             <Grade
             grade={grade}
             key={grade.id}/>)}
+            <AddGradeButton/>
         </td>
 
     </tr>;
