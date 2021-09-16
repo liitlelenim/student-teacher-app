@@ -7,13 +7,11 @@ const AppNavbar = () => {
             <Container>
                 <Navbar.Brand href="">Student-Teacher</Navbar.Brand>
                 <Nav className="me-right">
-                    <Nav.Link><Link to={"/"}
-                                    style={{color: 'inherit', textDecoration: 'inherit'}}>Home
-                    </Link></Nav.Link>
-                    <Nav.Link>
-                        <Link to={"/about"}
-                              style={{color: 'inherit', textDecoration: 'inherit'}}>About
-                        </Link>
+                    <Nav.Link as={Link} to={"/"}>
+                        Home
+                    </Nav.Link>
+                    <Nav.Link as={Link} to={"/about"}>
+                        About
                     </Nav.Link>
                 </Nav>
             </Container>
