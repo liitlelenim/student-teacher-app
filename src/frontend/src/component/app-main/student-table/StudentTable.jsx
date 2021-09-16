@@ -4,12 +4,8 @@ import {useEffect, useState} from "react";
 
 const StudentTable = () => {
 
-    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-    const API_ALL_STUDENTS_ENDPOINT = process.env.REACT_APP_API_ALL_STUDENTS_ENDOPOINT;
-
-    const GET_ALL_STUDENTS_ENDPOINT = API_BASE_URL + API_ALL_STUDENTS_ENDPOINT;
+    const GET_ALL_STUDENTS_ENDPOINT = process.env.REACT_APP_API_BASE_URL + process.env.REACT_APP_API_ALL_STUDENTS_ENDOPOINT;
     const [students, setStudents] = useState([]);
-
 
     useEffect(() => {
             fetch(GET_ALL_STUDENTS_ENDPOINT, {
