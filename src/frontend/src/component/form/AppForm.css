@@ -2,3 +2,12 @@
     width: 40%;
     margin: 2rem auto auto;
 }
+.form-number-field{
+    width: 10rem;
+}
+.form-text-area-field{
+    height: 2.5em;
+}
+.non-resizable{
+    resize: none;
+}

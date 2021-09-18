@@ -27,8 +27,10 @@ const CreateStudentForm = () => {
                 })
             }
             fetch(POST_STUDENT_ENDPOINT,requestOptions)
-                .then(()=>{
-                    history.push("/");
+                .then((res)=>{
+                    if(res.ok) {
+                        history.push("/");
+                    }
                 })
 
         }
@@ -57,7 +59,7 @@ const CreateStudentForm = () => {
 
 
                     </Form.Group>
-                    <Button variant={"primary"} type={"submit"} onClick={createStudent} >Create</Button>
+                    <Button variant={"primary"} type={"submit"} onClick={createStudent}>Create</Button>
                 </Form>
             </Col>
         </div>

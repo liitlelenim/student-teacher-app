@@ -17,7 +17,7 @@ const StudentTableEntry = ({student}) =>{
             <Grade
             grade={grade}
             key={grade.id}/>)}
-            <AddGradeButton/>
+            <AddGradeButton studentId={student.id}/>
         </td>
 
     </tr>;

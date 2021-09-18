@@ -1,6 +1,5 @@
 import "./Grade.css"
-import {Popover} from "react-bootstrap";
-import {OverlayTrigger} from "react-bootstrap";
+import {Popover, OverlayTrigger} from "react-bootstrap";
 
 const Grade = ({grade}) =>{
     const descriptionPopover = (
@@ -14,7 +13,7 @@ const Grade = ({grade}) =>{
         </Popover>
     )
 
-    return <OverlayTrigger trigger={['hover', 'focus']} placement={"bottom"} overlay={descriptionPopover} >
+    return <OverlayTrigger  trigger={['hover', 'focus']} placement={"bottom"} overlay={descriptionPopover} >
         <div className={"grade"}>{grade.value}</div>
     </OverlayTrigger>
 }
