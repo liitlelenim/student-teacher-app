@@ -67,7 +67,7 @@ const AddGradeForm = () => {
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <FormLabel>Description</FormLabel>
-                        <Form.Control className={"non-resizable"} as="textarea" minLength={0} maxLength={255} required
+                        <Form.Control className={"non-resizable"} as="textarea" maxLength={255}
                                       type={"text"}
                                       placeholder={"Grade's description"}
                                       onChange={(event => {
