@@ -2,7 +2,7 @@ import {AppNavbar} from "./component/app-navbar/AppNavbar";
 import {Col} from "react-bootstrap";
 import {AppMain} from "./component/app-main/AppMain";
 import {BrowserRouter,Switch,Route} from "react-router-dom";
-import {CreateStudentForm} from "./component/create-student-form/CreateStudentForm";
+import {CreateStudentForm} from "./component/form/create-student-form/CreateStudentForm";
 
 
 const App = () => {

@@ -1,4 +1,4 @@
-import "./CreateStudentForm.css";
+import "../AppForm.css";
 import {Button, Col, Form, FormLabel} from "react-bootstrap";
 import {useRef, useState} from "react";
 import {useHistory} from 'react-router-dom'
@@ -35,7 +35,7 @@ const CreateStudentForm = () => {
     }
 
     return (
-        <div className={"create-student-form-container"}>
+        <div className={"form-container"}>
             <Col>
                 <Form className={"mb-3"} ref={creationForm}>
                     <Form.Group className="mb-3">
