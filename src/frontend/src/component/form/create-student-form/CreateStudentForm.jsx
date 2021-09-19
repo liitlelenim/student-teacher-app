@@ -42,7 +42,7 @@ const CreateStudentForm = () => {
                 <Form className={"mb-3"} ref={creationForm}>
                     <Form.Group className="mb-3">
                         <FormLabel>First name</FormLabel>
-                        <Form.Control minLength={2} maxLength={100} required type={"text"}
+                        <Form.Control minLength={2} maxLength={35} required type={"text"}
                                       placeholder={"Student's first name"}
                                       onChange={(event => {
                                           setFirstNameInput(event.target.value);
@@ -51,7 +51,7 @@ const CreateStudentForm = () => {
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <FormLabel>Last name</FormLabel>
-                        <Form.Control minLength={2} maxLength={100} required type={"text"}
+                        <Form.Control minLength={2} maxLength={35} required type={"text"}
                                       placeholder={"Student's last name"}
                                       onChange={(event => {
                                           setLastNameInput(event.target.value);
