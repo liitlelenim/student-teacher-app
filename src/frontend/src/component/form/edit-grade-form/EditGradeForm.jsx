@@ -10,9 +10,6 @@ const EditGradeForm = () => {
     const history = useHistory();
 
     const editionForm = useRef();
-    const valueField = useRef();
-    const weightField = useRef();
-    const descriptionField =useRef();
 
     const [gradeData, setGradeData] = useState(undefined);
     const [valueInput, setValueInput] = useState(0);
@@ -28,50 +25,51 @@ const EditGradeForm = () => {
     const GET_GRADE_ENDPOINT = API_BASE_URL + API_GRADE_URL +
         `${gradeId}/` + process.env.REACT_APP_API_GRADE_INFO;
 
+    const DELETE_GRADE_ENDPOINT = API_BASE_URL + API_GRADE_URL +
+        `${gradeId}/` + process.env.REACT_APP_API_DELETE_GRADE;
     useEffect(() => {
         const requestOptions = {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
-            }};
-        fetch(GET_GRADE_ENDPOINT,requestOptions)
-            .then((res) => {
-            if (res.ok) {
-                return res.json();
             }
-        }).then((json) => {
+        };
+        fetch(GET_GRADE_ENDPOINT, requestOptions)
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                }
+            }).then((json) => {
             setGradeData(json);
         })
     }, [GET_GRADE_ENDPOINT]);
-    useEffect(()=>{
-        if(gradeData!==undefined) {
+
+    useEffect(() => {
+        if (gradeData !== undefined) {
             setValueInput(gradeData.value);
             setWeightInput(gradeData.weight);
             setDescriptionInput(gradeData.description);
         }
-    },[gradeData])
+    }, [gradeData])
 
     const editGrade = (event) => {
         if (editionForm.current.reportValidity()) {
             event.preventDefault();
-            const patchBody={};
-            let edited=false;
-            if(valueInput!==gradeData.value)
-            {
-                edited=true;
-                patchBody.value=valueInput;
+            const patchBody = {};
+            let edited = false;
+            if (valueInput !== gradeData.value) {
+                edited = true;
+                patchBody.value = valueInput;
             }
-            if(weightInput!==gradeData.weight)
-            {
-                edited=true;
-                patchBody.weight=weightInput;
+            if (weightInput !== gradeData.weight) {
+                edited = true;
+                patchBody.weight = weightInput;
             }
-            if(descriptionInput!==gradeData.description)
-            {
-                edited=true;
-                patchBody.description=descriptionInput;
+            if (descriptionInput !== gradeData.description) {
+                edited = true;
+                patchBody.description = descriptionInput;
             }
-            if(edited) {
+            if (edited) {
                 const requestOptions = {
                     method: 'PATCH',
                     headers: {
@@ -79,7 +77,6 @@ const EditGradeForm = () => {
                     },
                     body: JSON.stringify({...patchBody})
                 }
-                console.log(JSON.stringify(patchBody))
                 fetch(PATCH_GRADE_ENDPOINT, requestOptions).then(
                     (res) => {
                         if (res.ok) {
@@ -92,6 +89,18 @@ const EditGradeForm = () => {
         }
 
     }
+    const deleteGrade = () => {
+        const requestOptions = {
+            method: 'DELETE',
+        }
+        fetch(DELETE_GRADE_ENDPOINT, requestOptions).then(
+            (res) => {
+                if (res.ok) {
+                    history.push("/")
+                }
+            }
+        )
+    }
     if (gradeData !== undefined) {
         return (
             <div className={"form-container"}>
@@ -99,7 +108,7 @@ const EditGradeForm = () => {
                     <Form className={"mb-3"} ref={editionForm}>
                         <Form.Group className="mb-3 form-number-field">
                             <FormLabel>Value</FormLabel>
-                            <Form.Control ref={valueField} min={0} max={100} required type={"number"}
+                            <Form.Control min={0} max={100} required type={"number"}
                                           placeholder={0}
                                           value={valueInput}
                                           onChange={(event => {
@@ -109,7 +118,7 @@ const EditGradeForm = () => {
                         </Form.Group>
                         <Form.Group className="mb-3 form-number-field">
                             <FormLabel>Weight</FormLabel>
-                            <Form.Control ref={weightField} min={0} max={100} required type={"number"}
+                            <Form.Control min={0} max={100} required type={"number"}
                                           placeholder={0}
                                           value={weightInput}
                                           onChange={(event => {
@@ -118,7 +127,7 @@ const EditGradeForm = () => {
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <FormLabel>Description</FormLabel>
-                            <Form.Control ref={descriptionField} className={"non-resizable"} as="textarea" maxLength={255}
+                            <Form.Control className={"non-resizable"} as="textarea" maxLength={255}
                                           type={"text"}
                                           placeholder={"Grade's description"}
                                           value={descriptionInput}
@@ -127,7 +136,8 @@ const EditGradeForm = () => {
                                           })}/>
                         </Form.Group>
                         <Button variant={"primary"} type={"submit"} onClick={editGrade}>Edit</Button>
-                        <Button className={"secondary-form-button"} variant={"danger"}>Delete</Button>
+                        <Button className={"secondary-form-button"} variant={"danger"}
+                                onClick={deleteGrade}>Delete</Button>
 
                     </Form>
 
