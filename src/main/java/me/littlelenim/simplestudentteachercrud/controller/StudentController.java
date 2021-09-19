@@ -41,4 +41,8 @@ public class StudentController {
         studentService.deleteStudentById(id);
     }
 
+    @PatchMapping(value = "/student/{id}/patch")
+    public void patchGrade(@PathVariable("id") Long id,@RequestBody StudentDTO studentDTO){
+        studentService.patchStudent(id,studentDTO);
+    }
 }

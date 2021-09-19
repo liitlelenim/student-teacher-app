@@ -6,13 +6,11 @@ import me.littlelenim.simplestudentteachercrud.dto.StudentDTO;
 import me.littlelenim.simplestudentteachercrud.exception.InvalidIdException;
 import me.littlelenim.simplestudentteachercrud.model.Grade;
 import me.littlelenim.simplestudentteachercrud.model.Student;
-import me.littlelenim.simplestudentteachercrud.repository.GradeRepository;
 import me.littlelenim.simplestudentteachercrud.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -40,6 +38,17 @@ public class StudentService {
 
         student.addGrade(grade);
         studentRepository.save(student);
+    }
+    @Transactional
+    public void patchStudent(Long studentId, StudentDTO dto){
+        Student student = getStudentById(studentId);
+
+        if(dto.getFirstName().length()>0){
+            student.setFirstName(dto.getFirstName());
+        }
+        if(dto.getLastName().length()>0){
+            student.setLastName(dto.getLastName());
+        }
     }
     public Student getStudentById(Long studentId){
         return studentRepository.findById(studentId).orElseThrow(()->{
