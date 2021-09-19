@@ -18,10 +18,14 @@ import java.util.Optional;
 @AllArgsConstructor
 public class StudentService {
     private final StudentRepository studentRepository;
-    private final GradeRepository gradeRepository;
 
     public List<Student> getAllStudents(){
         return studentRepository.findAll();
+    }
+
+    @Transactional
+    public void deleteStudentById(Long id){
+        studentRepository.deleteById(id);
     }
     @Transactional
     public void addNewStudent(StudentDTO dto){
