@@ -17,21 +17,28 @@ public class StudentController {
     private final StudentService studentService;
 
     @GetMapping(value = "/all-students", produces = "application/json")
-    public List<Student> getAllStudents(){
+    public List<Student> getAllStudents() {
         return studentService.getAllStudents();
     }
+
     @GetMapping(value = "/student/{id}/info", produces = "application/json")
-    public Student getStudent(@PathVariable("id") Long id){
+    public Student getStudent(@PathVariable("id") Long id) {
         return studentService.getStudentById(id);
     }
+
     @PostMapping(value = "/student/{id}/add-grade")
-    public void addGradeToStudent(@RequestBody GradeDTO gradeDTO, @PathVariable Long id){
-        studentService.addGradeByStudentId(id,gradeDTO);
+    public void addGradeToStudent(@RequestBody GradeDTO gradeDTO, @PathVariable Long id) {
+        studentService.addGradeByStudentId(id, gradeDTO);
     }
+
     @PostMapping(value = "/create-student")
-    public void createStudent(@RequestBody StudentDTO studentDTO){
+    public void createStudent(@RequestBody StudentDTO studentDTO) {
         studentService.addNewStudent(studentDTO);
     }
 
+    @DeleteMapping(value = "/student/{id}/delete")
+    public void deleteStudent(@PathVariable Long id) {
+        studentService.deleteStudentById(id);
+    }
 
 }

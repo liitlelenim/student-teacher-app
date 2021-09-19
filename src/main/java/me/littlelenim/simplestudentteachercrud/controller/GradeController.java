@@ -13,13 +13,18 @@ import org.springframework.web.bind.annotation.*;
 public class GradeController {
     private final GradeService gradeService;
 
-    @GetMapping("/grade/{id}/info")
+    @GetMapping(value = "/grade/{id}/info")
     public Grade getGrade(@PathVariable("id") Long id){
         return gradeService.getGradeById(id);
     }
-    @PatchMapping("/grade/{id}/patch")
+    @PatchMapping(value = "/grade/{id}/patch")
     public void patchGrade(@PathVariable("id") Long id,@RequestBody GradeDTO gradeDTO){
         gradeService.patchGrade(id,gradeDTO);
     }
+    @DeleteMapping( value = "/grade/{id}/delete")
+    public void deleteGrade(@PathVariable Long id){
+
+    }
+
 
 }
