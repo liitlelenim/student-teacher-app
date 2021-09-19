@@ -1,5 +1,6 @@
 import "../GradeEntry.css"
 import {Popover, OverlayTrigger} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 const Grade = ({grade}) =>{
     const descriptionPopover = (
@@ -14,7 +15,7 @@ const Grade = ({grade}) =>{
     )
 
     return <OverlayTrigger  trigger={['hover', 'focus']} placement={"bottom"} overlay={descriptionPopover} >
-        <div className={"grade-entry"}>{grade.value}</div>
+        <Link to={`/edit-grade-form/${grade.id}`}><div className={"grade-entry"}>{grade.value}</div></Link>
     </OverlayTrigger>
 }
 export {Grade}

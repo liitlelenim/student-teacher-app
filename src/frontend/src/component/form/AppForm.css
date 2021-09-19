@@ -6,8 +6,11 @@
     width: 10rem;
 }
 .form-text-area-field{
-    height: 2.5em;
+    height: 2.5rem;
 }
 .non-resizable{
     resize: none;
+}
+.secondary-form-button{
+    margin-left: 1rem;
 }
