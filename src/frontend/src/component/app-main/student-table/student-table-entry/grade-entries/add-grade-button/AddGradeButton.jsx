@@ -1,12 +1,12 @@
 import {Link} from "react-router-dom";
-import {Button} from "react-bootstrap";
+import "../GradeEntry.css"
 import {Plus} from "react-bootstrap-icons";
 
 const AddGradeButton = ({studentId}) => {
     return <Link to={`/add-grade-form/${studentId}`}>
-        <Button size={"sm"} variant={"primary"}>
+        <div className={"grade-entry"}>
             <Plus size={24}/>
-        </Button>
+        </div>
     </Link>
 }
 export {AddGradeButton}

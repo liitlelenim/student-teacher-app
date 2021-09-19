@@ -1,4 +1,4 @@
-.grade{
+.grade-entry{
     color: white;
     height: 2rem;
     width: 2rem;
@@ -10,7 +10,7 @@
     margin: 0.5rem 0.25rem 0.25rem;
 
 }
-.grade:hover{
+.grade-entry:hover{
     cursor: pointer;
 }
 

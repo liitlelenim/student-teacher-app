@@ -1,5 +1,5 @@
-import {Grade} from "./grade/Grade.jsx"
-import {AddGradeButton} from "./add-grade-button/AddGradeButton";
+import {Grade} from "./grade-entries/grade/Grade.jsx"
+import {AddGradeButton} from "./grade-entries/add-grade-button/AddGradeButton";
 
 const StudentTableEntry = ({student}) =>{
     return <tr>
