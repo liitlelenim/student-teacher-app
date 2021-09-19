@@ -1,15 +1,14 @@
-import {Grade} from "./grade-entries/grade/Grade.jsx"
+import {Grade} from "./grade-entries/grade/Grade.jsx";
 import {AddGradeButton} from "./grade-entries/add-grade-button/AddGradeButton";
-
 const StudentTableEntry = ({student}) =>{
     return <tr>
-        <td>
+        <td valign={"middle"}>
             {student.id}
         </td>
-        <td>
+        <td valign={"middle"}>
             {student.firstName}
         </td>
-        <td>
+        <td valign={"middle"}>
             {student.lastName}
         </td>
         <td>
