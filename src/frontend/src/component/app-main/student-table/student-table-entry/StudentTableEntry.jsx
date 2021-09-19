@@ -1,7 +1,8 @@
+import "./StudentTableEntry.css";
 import {Grade} from "./grade-entries/grade/Grade.jsx";
 import {AddGradeButton} from "./grade-entries/add-grade-button/AddGradeButton";
 const StudentTableEntry = ({student}) =>{
-    return <tr>
+    return <tr className={"student-table-row"}>
         <td valign={"middle"}>
             {student.id}
         </td>
