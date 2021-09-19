@@ -52,6 +52,7 @@ const AddGradeForm = () => {
                         <FormLabel>Value</FormLabel>
                         <Form.Control min={0} max={100} required type={"number"}
                                       placeholder={0}
+                                      value={valueInput}
                                       onChange={(event => {
                                           setValueInput(parseInt(event.target.value));
                                       })}
@@ -61,6 +62,7 @@ const AddGradeForm = () => {
                         <FormLabel>Weight</FormLabel>
                         <Form.Control min={0} max={100} required type={"number"}
                                       placeholder={0}
+                                      value={weightInput}
                                       onChange={(event => {
                                           setWeightInput(parseInt(event.target.value));
                                       })}/>
@@ -70,6 +72,7 @@ const AddGradeForm = () => {
                         <Form.Control className={"non-resizable"} as="textarea" maxLength={255}
                                       type={"text"}
                                       placeholder={"Grade's description"}
+                                      value={descriptionInput}
                                       onChange={(event => {
                                           setDescriptionInput(event.target.value);
                                       })}/>
