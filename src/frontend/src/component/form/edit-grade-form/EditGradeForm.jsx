@@ -20,13 +20,13 @@ const EditGradeForm = () => {
     const API_GRADE_URL = process.env.REACT_APP_API_GRADE;
 
     const PATCH_GRADE_ENDPOINT = API_BASE_URL + API_GRADE_URL
-        + `${gradeId}/` + process.env.REACT_APP_API_PATCH_GRADE;
+        + `${gradeId}/` + process.env.REACT_APP_API_PATCH;
 
     const GET_GRADE_ENDPOINT = API_BASE_URL + API_GRADE_URL +
-        `${gradeId}/` + process.env.REACT_APP_API_GRADE_INFO;
+        `${gradeId}/` + process.env.REACT_APP_API_INFO;
 
     const DELETE_GRADE_ENDPOINT = API_BASE_URL + API_GRADE_URL +
-        `${gradeId}/` + process.env.REACT_APP_API_DELETE_GRADE;
+        `${gradeId}/` + process.env.REACT_APP_API_DELETE;
     useEffect(() => {
         const requestOptions = {
             method: 'GET',
