@@ -1,0 +1,6 @@
+.hoverable-light-bulb{
+    transition: color 0.25s;
+}
+.hoverable-light-bulb:hover{
+    color: #ffff4d;
+}
