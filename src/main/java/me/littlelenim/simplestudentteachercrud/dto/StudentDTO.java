@@ -11,6 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StudentDTO {
-    private String firstName;
-    private String lastName;
+    private String firstName="";
+    private String lastName="";
 }
