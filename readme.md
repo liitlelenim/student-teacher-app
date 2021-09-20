@@ -1,5 +1,11 @@
 <h1 align="center">Student-Teacher</h1>
 
+<div align="center">
+
+![Logo](./logo.png)
+
+</div>
+
 ###Simple CRUD application that allows user to keep track of student and their grades.
 ##Tech stack
 ###Backend
