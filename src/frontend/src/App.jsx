@@ -6,6 +6,7 @@ import {CreateStudentForm} from "./component/form/create-student-form/CreateStud
 import {AddGradeForm} from "./component/form/add-grade-form/AddGradeForm";
 import {EditGradeForm} from "./component/form/edit-grade-form/EditGradeForm";
 import {EditStudentForm} from "./component/form/edit-student-form/EditStudentForm";
+import {AboutPage} from "./component/about-page/AboutPage";
 
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
       <AppNavbar/>
       <Switch>
         <Route path={'/'} exact component={AppMain} />
+        <Route path={'/about'} exact component={AboutPage} />\
         <Route path={"/create-student-form"} exact component={CreateStudentForm}/>
         <Route path={"/add-grade-form/:studentId"} exact component={AddGradeForm}/>
         <Route path={"/edit-grade-form/:gradeId"} exact component={EditGradeForm}/>
