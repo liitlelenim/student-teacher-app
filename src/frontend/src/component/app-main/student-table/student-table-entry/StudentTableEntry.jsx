@@ -8,17 +8,17 @@ const StudentTableEntry = ({student}) => {
     const navigateToChosenStudentEditForm=()=>{
         history.push(`/edit-student-form/${student.id}`)
     }
-    return <tr className={"student-table-row"} onClick={navigateToChosenStudentEditForm}>
-            <td valign={"middle"}>
+    return <tr className={"student-table-row"}>
+            <td valign={"middle"}  onClick={navigateToChosenStudentEditForm}>
                 {student.id}
             </td>
-            <td valign={"middle"}>
+            <td valign={"middle"}  onClick={navigateToChosenStudentEditForm}>
                 {student.firstName}
             </td>
-            <td valign={"middle"}>
+            <td valign={"middle"} onClick={navigateToChosenStudentEditForm}>
                 {student.lastName}
             </td>
-            <td>
+            <td className={"student-table-row-grade-area"}>
                 {student.grades.map(grade =>
                     <Grade
                         grade={grade}
