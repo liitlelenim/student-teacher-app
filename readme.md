@@ -15,11 +15,8 @@
 
 Check out live version right now on: https://student-teacher.netlify.app/
 
----
 
 ## Tech stack
-
----
 
 ### Backend
 
@@ -38,7 +35,6 @@ Check out live version right now on: https://student-teacher.netlify.app/
 
 ## Features
 
----
 
 * Adding students to the database
 * Editing and deleting students data
@@ -47,7 +43,6 @@ Check out live version right now on: https://student-teacher.netlify.app/
 
 ## Running project on your machine
 
----
 
 * First you should open a terminal window inside the project root folder and then run the following command
     ```console
