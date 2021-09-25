@@ -1,10 +1,9 @@
 package me.littlelenim.simplestudentteachercrud.model;
 
 import me.littlelenim.simplestudentteachercrud.dto.GradeDTO;
-import me.littlelenim.simplestudentteachercrud.dto.StudentDTO;
+import me.littlelenim.simplestudentteachercrud.dto.StudentPostDTO;
 import me.littlelenim.simplestudentteachercrud.repository.GradeRepository;
 import me.littlelenim.simplestudentteachercrud.repository.StudentRepository;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -36,8 +35,8 @@ public class StudentAndGradeModelTests {
     }
     @Test
     public void studentAndGradeDTOTest(){
-        StudentDTO testStudentDTO = new StudentDTO("John","Smith");
-        Student testStudent = new Student(testStudentDTO);
+        StudentPostDTO testStudentPostDTO = new StudentPostDTO("John","Smith");
+        Student testStudent = new Student(testStudentPostDTO);
         Assertions.assertNotNull(testStudent,"Student created from dto should not be null!");
 
         GradeDTO testGradeDTO = new GradeDTO(5,2);

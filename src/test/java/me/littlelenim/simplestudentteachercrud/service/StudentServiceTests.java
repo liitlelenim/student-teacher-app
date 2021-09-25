@@ -1,7 +1,7 @@
 package me.littlelenim.simplestudentteachercrud.service;
 
 import me.littlelenim.simplestudentteachercrud.dto.GradeDTO;
-import me.littlelenim.simplestudentteachercrud.dto.StudentDTO;
+import me.littlelenim.simplestudentteachercrud.dto.StudentPostDTO;
 import me.littlelenim.simplestudentteachercrud.model.Student;
 import me.littlelenim.simplestudentteachercrud.repository.StudentRepository;
 import org.junit.jupiter.api.AfterEach;
@@ -23,13 +23,13 @@ public class StudentServiceTests {
 
     @Test
     public void addStudentTest(){
-        StudentDTO dto = new StudentDTO("John", "Smith");
+        StudentPostDTO dto = new StudentPostDTO("John", "Smith");
         studentService.addNewStudent(dto);
     }
     @Test
     @Transactional
     public void addGradeToStudentTest(){
-        StudentDTO dto = new StudentDTO("John", "Smith");
+        StudentPostDTO dto = new StudentPostDTO("John", "Smith");
         studentService.addNewStudent(dto);
 
         GradeDTO gradeDTO = new GradeDTO(5,2,"Math exam");

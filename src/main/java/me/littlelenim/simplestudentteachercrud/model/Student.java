@@ -1,9 +1,8 @@
 package me.littlelenim.simplestudentteachercrud.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import me.littlelenim.simplestudentteachercrud.dto.StudentDTO;
+import me.littlelenim.simplestudentteachercrud.dto.StudentPostDTO;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -45,7 +44,7 @@ public class Student
         this.firstName = firstName;
         this.lastName = lastName;
     }
-    public Student(StudentDTO dto) {
+    public Student(StudentPostDTO dto) {
         this.firstName = dto.getFirstName();
         this.lastName = dto.getLastName();
     }

@@ -2,11 +2,13 @@ package me.littlelenim.simplestudentteachercrud.controller;
 
 import lombok.AllArgsConstructor;
 import me.littlelenim.simplestudentteachercrud.dto.GradeDTO;
-import me.littlelenim.simplestudentteachercrud.dto.StudentDTO;
+import me.littlelenim.simplestudentteachercrud.dto.StudentPatchDTO;
+import me.littlelenim.simplestudentteachercrud.dto.StudentPostDTO;
 import me.littlelenim.simplestudentteachercrud.model.Student;
 import me.littlelenim.simplestudentteachercrud.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @CrossOrigin
@@ -33,8 +35,8 @@ public class StudentController {
     }
 
     @PostMapping(value = "/create-student")
-    public void createStudent(@RequestBody StudentDTO studentDTO) {
-        studentService.addNewStudent(studentDTO);
+    public void createStudent(@RequestBody @Valid StudentPostDTO studentPostDTO) {
+        studentService.addNewStudent(studentPostDTO);
     }
 
     @DeleteMapping(value = "/student/{id}/delete")
@@ -43,7 +45,7 @@ public class StudentController {
     }
 
     @PatchMapping(value = "/student/{id}/patch")
-    public void patchGrade(@PathVariable("id") Long id,@RequestBody StudentDTO studentDTO){
-        studentService.patchStudent(id,studentDTO);
+    public void patchGrade(@PathVariable("id") Long id,@RequestBody @Valid StudentPatchDTO studentPatchDTO){
+        studentService.patchStudent(id, studentPatchDTO);
     }
 }

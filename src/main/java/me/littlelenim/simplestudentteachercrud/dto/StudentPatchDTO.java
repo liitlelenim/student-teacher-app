@@ -6,11 +6,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.Size;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class StudentDTO {
-    private String firstName="";
-    private String lastName="";
+public class StudentPatchDTO {
+    @Size(min = 2, max = 35)
+    private String firstName;
+
+    @Size(min = 2, max = 35)
+    private String lastName;
 }
