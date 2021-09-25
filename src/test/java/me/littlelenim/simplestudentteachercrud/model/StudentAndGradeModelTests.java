@@ -1,6 +1,6 @@
 package me.littlelenim.simplestudentteachercrud.model;
 
-import me.littlelenim.simplestudentteachercrud.dto.GradeDTO;
+import me.littlelenim.simplestudentteachercrud.dto.GradePostDTO;
 import me.littlelenim.simplestudentteachercrud.dto.StudentPostDTO;
 import me.littlelenim.simplestudentteachercrud.repository.GradeRepository;
 import me.littlelenim.simplestudentteachercrud.repository.StudentRepository;
@@ -34,14 +34,14 @@ public class StudentAndGradeModelTests {
         System.out.println("testStudent = " + testStudent);
     }
     @Test
-    public void studentAndGradeDTOTest(){
-        StudentPostDTO testStudentPostDTO = new StudentPostDTO("John","Smith");
+    public void studentAndGradeDTOTest() {
+        StudentPostDTO testStudentPostDTO = new StudentPostDTO("John", "Smith");
         Student testStudent = new Student(testStudentPostDTO);
-        Assertions.assertNotNull(testStudent,"Student created from dto should not be null!");
+        Assertions.assertNotNull(testStudent, "Student created from dto should not be null!");
 
-        GradeDTO testGradeDTO = new GradeDTO(5,2);
-        Grade testGrade = new Grade(testGradeDTO);
-        Assertions.assertNotNull(testGradeDTO,"Grade created from dto should not be null!");
+        GradePostDTO testGradePostDTO = new GradePostDTO(5, 2);
+        Grade testGrade = new Grade(testGradePostDTO);
+        Assertions.assertNotNull(testGradePostDTO, "Grade created from dto should not be null!");
     }
     @AfterEach
     public void clearStudentRepository(){

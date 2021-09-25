@@ -1,7 +1,7 @@
 package me.littlelenim.simplestudentteachercrud.controller;
 
 import lombok.AllArgsConstructor;
-import me.littlelenim.simplestudentteachercrud.dto.GradeDTO;
+import me.littlelenim.simplestudentteachercrud.dto.GradePostDTO;
 import me.littlelenim.simplestudentteachercrud.dto.StudentPatchDTO;
 import me.littlelenim.simplestudentteachercrud.dto.StudentPostDTO;
 import me.littlelenim.simplestudentteachercrud.model.Student;
@@ -30,8 +30,8 @@ public class StudentController {
     }
 
     @PostMapping(value = "/student/{id}/add-grade")
-    public void addGradeToStudent(@RequestBody GradeDTO gradeDTO, @PathVariable Long id) {
-        studentService.addGradeByStudentId(id, gradeDTO);
+    public void addGradeToStudent(@RequestBody @Valid GradePostDTO gradePostDTO, @PathVariable Long id) {
+        studentService.addGradeByStudentId(id, gradePostDTO);
     }
 
     @PostMapping(value = "/create-student")

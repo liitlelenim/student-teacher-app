@@ -1,7 +1,7 @@
 package me.littlelenim.simplestudentteachercrud.service;
 
 import lombok.AllArgsConstructor;
-import me.littlelenim.simplestudentteachercrud.dto.GradeDTO;
+import me.littlelenim.simplestudentteachercrud.dto.GradePatchDTO;
 import me.littlelenim.simplestudentteachercrud.exception.InvalidIdException;
 import me.littlelenim.simplestudentteachercrud.model.Grade;
 import me.littlelenim.simplestudentteachercrud.repository.GradeRepository;
@@ -20,16 +20,16 @@ public class GradeService {
     }
 
     @Transactional
-    public void patchGrade(Long id, GradeDTO dto) {
+    public void patchGrade(Long id, GradePatchDTO dto) {
         Grade grade = getGradeById(id);
 
-        if (dto.getValue() != -1) {
+        if (dto.getValue() != null) {
             grade.setValue(dto.getValue());
         }
-        if (dto.getWeight() != -1) {
+        if (dto.getWeight() != null) {
             grade.setWeight(dto.getWeight());
         }
-        if (dto.getDescription().length() != 0) {
+        if (dto.getDescription() != null) {
             grade.setDescription(dto.getDescription());
         }
     }

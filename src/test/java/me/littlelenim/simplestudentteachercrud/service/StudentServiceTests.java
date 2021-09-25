@@ -1,6 +1,6 @@
 package me.littlelenim.simplestudentteachercrud.service;
 
-import me.littlelenim.simplestudentteachercrud.dto.GradeDTO;
+import me.littlelenim.simplestudentteachercrud.dto.GradePostDTO;
 import me.littlelenim.simplestudentteachercrud.dto.StudentPostDTO;
 import me.littlelenim.simplestudentteachercrud.model.Student;
 import me.littlelenim.simplestudentteachercrud.repository.StudentRepository;
@@ -32,9 +32,9 @@ public class StudentServiceTests {
         StudentPostDTO dto = new StudentPostDTO("John", "Smith");
         studentService.addNewStudent(dto);
 
-        GradeDTO gradeDTO = new GradeDTO(5,2,"Math exam");
+        GradePostDTO gradePostDTO = new GradePostDTO(5, 2, "Math exam");
         Student student = studentService.getAllStudents().get(0);
-        studentService.addGradeByStudentId(student.getId(),gradeDTO);
+        studentService.addGradeByStudentId(student.getId(), gradePostDTO);
         System.out.println("student = " + student);
         Assertions.assertNotEquals(0,student.getGrades().size(),"Grades should not be empty!");
     }

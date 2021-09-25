@@ -1,7 +1,7 @@
 package me.littlelenim.simplestudentteachercrud.service;
 
 import lombok.AllArgsConstructor;
-import me.littlelenim.simplestudentteachercrud.dto.GradeDTO;
+import me.littlelenim.simplestudentteachercrud.dto.GradePostDTO;
 import me.littlelenim.simplestudentteachercrud.dto.StudentPatchDTO;
 import me.littlelenim.simplestudentteachercrud.dto.StudentPostDTO;
 import me.littlelenim.simplestudentteachercrud.exception.InvalidIdException;
@@ -34,10 +34,10 @@ public class StudentService {
     }
 
     @Transactional
-    public void addGradeByStudentId(Long studentId, GradeDTO gradeDTO) {
+    public void addGradeByStudentId(Long studentId, GradePostDTO gradePostDTO) {
         Student student = getStudentById(studentId);
 
-        Grade grade = new Grade(gradeDTO);
+        Grade grade = new Grade(gradePostDTO);
 
         student.addGrade(grade);
         studentRepository.save(student);

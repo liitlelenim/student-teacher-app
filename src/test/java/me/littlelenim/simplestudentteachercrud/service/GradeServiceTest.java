@@ -1,6 +1,7 @@
 package me.littlelenim.simplestudentteachercrud.service;
 
-import me.littlelenim.simplestudentteachercrud.dto.GradeDTO;
+import me.littlelenim.simplestudentteachercrud.dto.GradePatchDTO;
+import me.littlelenim.simplestudentteachercrud.dto.GradePostDTO;
 import me.littlelenim.simplestudentteachercrud.exception.InvalidIdException;
 import me.littlelenim.simplestudentteachercrud.model.Grade;
 import me.littlelenim.simplestudentteachercrud.repository.GradeRepository;
@@ -15,8 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class GradeServiceTest {
 
@@ -28,7 +27,7 @@ class GradeServiceTest {
     private Long firstGradeId;
     @BeforeEach
     public void setUp() {
-        GradeDTO testDto = new GradeDTO(2,3,"WOOW");
+        GradePostDTO testDto = new GradePostDTO(2, 3, "WOOW");
         List<Grade> grades = new ArrayList<>();
 
         for(int i = 0; i <10; i++) {
@@ -49,16 +48,14 @@ class GradeServiceTest {
     @Test
     public void deleteGradeById() {
         gradeService.deleteGradeById(firstGradeId);
-        Assertions.assertThrows(InvalidIdException.class, () -> {
-            gradeService.getGradeById(firstGradeId);
-        });
+        Assertions.assertThrows(InvalidIdException.class, () -> gradeService.getGradeById(firstGradeId));
     }
 
     @Test
     @Transactional
     public void patchGrade() {
-        String testDescription="Hello";
-        GradeDTO patchDto = new GradeDTO();
+        String testDescription = "Hello";
+        GradePatchDTO patchDto = new GradePatchDTO();
         patchDto.setDescription(testDescription);
         gradeService.patchGrade(firstGradeId,patchDto);
 
