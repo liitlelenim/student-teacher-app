@@ -18,24 +18,24 @@ import java.util.List;
 public class StudentService {
     private final StudentRepository studentRepository;
 
-    public List<Student> getAllStudents() {
+    public List<Student> getAll() {
         return studentRepository.findAll();
     }
 
     @Transactional
-    public void deleteStudentById(Long id) {
+    public void deleteById(Long id) {
         studentRepository.deleteById(id);
     }
 
     @Transactional
-    public void addNewStudent(StudentPostDTO dto) {
+    public void add(StudentPostDTO dto) {
         Student student = new Student(dto);
         studentRepository.save(student);
     }
 
     @Transactional
     public void addGradeByStudentId(Long studentId, GradePostDTO gradePostDTO) {
-        Student student = getStudentById(studentId);
+        Student student = getById(studentId);
 
         Grade grade = new Grade(gradePostDTO);
 
@@ -44,8 +44,8 @@ public class StudentService {
     }
 
     @Transactional
-    public void patchStudent(Long studentId, StudentPatchDTO dto) {
-        Student student = getStudentById(studentId);
+    public void patchPersonalInfo(Long studentId, StudentPatchDTO dto) {
+        Student student = getById(studentId);
 
         if (dto.getFirstName() != null) {
             student.setFirstName(dto.getFirstName());
@@ -55,7 +55,7 @@ public class StudentService {
         }
     }
 
-    public Student getStudentById(Long studentId) {
+    public Student getById(Long studentId) {
         return studentRepository.findById(studentId).orElseThrow(() -> {
             throw new InvalidIdException("There's no student with id: " + studentId + ".");
         });

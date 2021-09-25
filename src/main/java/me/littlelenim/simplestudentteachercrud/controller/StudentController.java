@@ -21,12 +21,12 @@ public class StudentController {
 
     @GetMapping(value = "/all-students", produces = "application/json")
     public List<Student> getAllStudents() {
-        return studentService.getAllStudents();
+        return studentService.getAll();
     }
 
     @GetMapping(value = "/student/{id}/info", produces = "application/json")
     public Student getStudent(@PathVariable("id") Long id) {
-        return studentService.getStudentById(id);
+        return studentService.getById(id);
     }
 
     @PostMapping(value = "/student/{id}/add-grade")
@@ -36,16 +36,16 @@ public class StudentController {
 
     @PostMapping(value = "/create-student")
     public void createStudent(@RequestBody @Valid StudentPostDTO studentPostDTO) {
-        studentService.addNewStudent(studentPostDTO);
+        studentService.add(studentPostDTO);
     }
 
     @DeleteMapping(value = "/student/{id}/delete")
     public void deleteStudent(@PathVariable Long id) {
-        studentService.deleteStudentById(id);
+        studentService.deleteById(id);
     }
 
     @PatchMapping(value = "/student/{id}/patch")
     public void patchGrade(@PathVariable("id") Long id,@RequestBody @Valid StudentPatchDTO studentPatchDTO){
-        studentService.patchStudent(id, studentPatchDTO);
+        studentService.patchPersonalInfo(id, studentPatchDTO);
     }
 }

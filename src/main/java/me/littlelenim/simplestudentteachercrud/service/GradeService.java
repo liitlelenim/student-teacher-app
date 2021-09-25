@@ -15,13 +15,13 @@ public class GradeService {
     private final GradeRepository gradeRepository;
 
     @Transactional
-    public void deleteGradeById(Long id) {
+    public void deleteById(Long id) {
         gradeRepository.deleteById(id);
     }
 
     @Transactional
     public void patchGrade(Long id, GradePatchDTO dto) {
-        Grade grade = getGradeById(id);
+        Grade grade = getById(id);
 
         if (dto.getValue() != null) {
             grade.setValue(dto.getValue());
@@ -34,7 +34,7 @@ public class GradeService {
         }
     }
     @Transactional
-    public Grade getGradeById(Long id){
+    public Grade getById(Long id){
         return gradeRepository.findById(id).orElseThrow(() -> {
             throw new InvalidIdException("There's no grade with id: " + id + ".");
         });

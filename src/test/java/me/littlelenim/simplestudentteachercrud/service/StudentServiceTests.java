@@ -24,16 +24,16 @@ public class StudentServiceTests {
     @Test
     public void addStudentTest(){
         StudentPostDTO dto = new StudentPostDTO("John", "Smith");
-        studentService.addNewStudent(dto);
+        studentService.add(dto);
     }
     @Test
     @Transactional
     public void addGradeToStudentTest(){
         StudentPostDTO dto = new StudentPostDTO("John", "Smith");
-        studentService.addNewStudent(dto);
+        studentService.add(dto);
 
         GradePostDTO gradePostDTO = new GradePostDTO(5, 2, "Math exam");
-        Student student = studentService.getAllStudents().get(0);
+        Student student = studentService.getAll().get(0);
         studentService.addGradeByStudentId(student.getId(), gradePostDTO);
         System.out.println("student = " + student);
         Assertions.assertNotEquals(0,student.getGrades().size(),"Grades should not be empty!");

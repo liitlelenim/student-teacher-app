@@ -17,7 +17,7 @@ public class GradeController {
 
     @GetMapping(value = "/grade/{id}/info")
     public Grade getGrade(@PathVariable("id") Long id) {
-        return gradeService.getGradeById(id);
+        return gradeService.getById(id);
     }
 
     @PatchMapping(value = "/grade/{id}/patch")
@@ -27,7 +27,7 @@ public class GradeController {
 
     @DeleteMapping(value = "/grade/{id}/delete")
     public void deleteGrade(@PathVariable Long id) {
-        gradeService.deleteGradeById(id);
+        gradeService.deleteById(id);
     }
 
 

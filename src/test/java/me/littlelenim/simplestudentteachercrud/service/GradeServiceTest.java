@@ -47,8 +47,8 @@ class GradeServiceTest {
 
     @Test
     public void deleteGradeById() {
-        gradeService.deleteGradeById(firstGradeId);
-        Assertions.assertThrows(InvalidIdException.class, () -> gradeService.getGradeById(firstGradeId));
+        gradeService.deleteById(firstGradeId);
+        Assertions.assertThrows(InvalidIdException.class, () -> gradeService.getById(firstGradeId));
     }
 
     @Test
@@ -59,7 +59,7 @@ class GradeServiceTest {
         patchDto.setDescription(testDescription);
         gradeService.patchGrade(firstGradeId,patchDto);
 
-        Grade patchedGrade = gradeService.getGradeById(firstGradeId);
+        Grade patchedGrade = gradeService.getById(firstGradeId);
 
         Assertions.assertEquals(testDescription,patchedGrade.getDescription(),"Patching should change" +
                 "entity properties.");
