@@ -22,24 +22,25 @@ public class StudentServiceTests {
 
 
     @Test
-    public void addStudentTest(){
+    public void addingNewStudentsShouldWork() {
         StudentPostDTO dto = new StudentPostDTO("John", "Smith");
         studentService.add(dto);
     }
+
     @Test
     @Transactional
-    public void addGradeToStudentTest(){
+    public void addingGradesToStudentShouldWork() {
         StudentPostDTO dto = new StudentPostDTO("John", "Smith");
         studentService.add(dto);
 
         GradePostDTO gradePostDTO = new GradePostDTO(5, 2, "Math exam");
         Student student = studentService.getAll().get(0);
         studentService.addGradeByStudentId(student.getId(), gradePostDTO);
-        System.out.println("student = " + student);
-        Assertions.assertNotEquals(0,student.getGrades().size(),"Grades should not be empty!");
+        Assertions.assertNotEquals(0, student.getGrades().size(), "Grades should not be empty!");
     }
+
     @AfterEach
-    public void clearStudentRepository(){
+    public void clearStudentRepository() {
         studentRepository.deleteAll();
         studentRepository.flush();
     }

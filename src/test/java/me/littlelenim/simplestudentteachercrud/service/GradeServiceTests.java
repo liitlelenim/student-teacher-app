@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
-class GradeServiceTest {
+class GradeServiceTests {
 
     @Autowired
     private GradeRepository gradeRepository;
@@ -25,12 +25,13 @@ class GradeServiceTest {
     private GradeService gradeService;
 
     private Long firstGradeId;
+
     @BeforeEach
     public void setUp() {
         GradePostDTO testDto = new GradePostDTO(2, 3, "WOOW");
         List<Grade> grades = new ArrayList<>();
 
-        for(int i = 0; i <10; i++) {
+        for (int i = 0; i < 10; i++) {
             grades.add(new Grade(testDto));
         }
 
@@ -46,24 +47,20 @@ class GradeServiceTest {
     }
 
     @Test
-    public void deleteGradeById() {
+    public void deletingGradeByIdShouldWork() {
         gradeService.deleteById(firstGradeId);
         Assertions.assertThrows(InvalidIdException.class, () -> gradeService.getById(firstGradeId));
     }
 
     @Test
     @Transactional
-    public void patchGrade() {
+    public void patchingGradeShouldWork() {
         String testDescription = "Hello";
         GradePatchDTO patchDto = new GradePatchDTO();
         patchDto.setDescription(testDescription);
-        gradeService.patchGrade(firstGradeId,patchDto);
-
+        gradeService.patchGrade(firstGradeId, patchDto);
         Grade patchedGrade = gradeService.getById(firstGradeId);
-
-        Assertions.assertEquals(testDescription,patchedGrade.getDescription(),"Patching should change" +
+        Assertions.assertEquals(testDescription, patchedGrade.getDescription(), "Patching should change" +
                 "entity properties.");
-
-        System.out.println("patchedGrade = " + patchedGrade);
     }
 }
