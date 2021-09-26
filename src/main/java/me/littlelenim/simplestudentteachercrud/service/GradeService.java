@@ -1,6 +1,7 @@
 package me.littlelenim.simplestudentteachercrud.service;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import me.littlelenim.simplestudentteachercrud.dto.GradePatchDTO;
 import me.littlelenim.simplestudentteachercrud.exception.InvalidIdException;
 import me.littlelenim.simplestudentteachercrud.model.Grade;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class GradeService {
 
     private final GradeRepository gradeRepository;

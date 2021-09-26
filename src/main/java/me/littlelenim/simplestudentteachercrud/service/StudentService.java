@@ -1,6 +1,7 @@
 package me.littlelenim.simplestudentteachercrud.service;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import me.littlelenim.simplestudentteachercrud.dto.GradePostDTO;
 import me.littlelenim.simplestudentteachercrud.dto.StudentPatchDTO;
 import me.littlelenim.simplestudentteachercrud.dto.StudentPostDTO;
@@ -14,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class StudentService {
     private final StudentRepository studentRepository;
 
