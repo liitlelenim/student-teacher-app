@@ -15,8 +15,8 @@ const AddGradeForm = () => {
     const [weightInput, setWeightInput] = useState(0);
     const [descriptionInput, setDescriptionInput] = useState("");
 
-    const POST_GRADE_ENDPOINT = process.env.REACT_APP_API_BASE_URL + process.env.REACT_APP_API_STUDENT
-        + `${studentId}/` + process.env.REACT_APP_API_ADD_GRADE;
+    const POST_GRADE_ENDPOINT = process.env.REACT_APP_API_BASE_URL + process.env.REACT_APP_API_STUDENTS
+        + `${studentId}/` + process.env.REACT_APP_API_GRADES;
 
     const addGrade = (event) => {
         if (creationForm.current.reportValidity()) {

@@ -16,16 +16,11 @@ const EditStudentForm = () => {
     const [lastNameInput, setLastNameInput] = useState("");
 
     const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-    const API_STUDENT_URL = process.env.REACT_APP_API_STUDENT;
+    const API_STUDENT_URL = process.env.REACT_APP_API_STUDENTS;
 
-    const PATCH_STUDENT_ENDPOINT = API_BASE_URL + API_STUDENT_URL
-        + `${studentId}/` + process.env.REACT_APP_API_PATCH;
+    const STUDENTS_ENDPOINT = API_BASE_URL + API_STUDENT_URL
+        + `${studentId}/`;
 
-    const GET_STUDENT_ENDPOINT = API_BASE_URL + API_STUDENT_URL +
-        `${studentId}/` + process.env.REACT_APP_API_INFO;
-
-    const DELETE_STUDENT_ENDPOINT = API_BASE_URL + API_STUDENT_URL +
-        `${studentId}/` + process.env.REACT_APP_API_DELETE;
 
     useEffect(() => {
         const requestOptions = {
@@ -34,7 +29,7 @@ const EditStudentForm = () => {
                 'Content-Type': 'application/json'
             }
         };
-        fetch(GET_STUDENT_ENDPOINT, requestOptions)
+        fetch(STUDENTS_ENDPOINT, requestOptions)
             .then((res) => {
                 if (res.ok) {
                     return res.json();
@@ -42,7 +37,7 @@ const EditStudentForm = () => {
             }).then((json) => {
             setStudentData(json);
         })
-    }, [GET_STUDENT_ENDPOINT]);
+    }, [STUDENTS_ENDPOINT]);
 
     useEffect(() => {
         if (studentData !== undefined) {
@@ -72,7 +67,7 @@ const EditStudentForm = () => {
                     },
                     body: JSON.stringify({...patchBody})
                 }
-                fetch(PATCH_STUDENT_ENDPOINT, requestOptions).then(
+                fetch(STUDENTS_ENDPOINT, requestOptions).then(
                     (res) => {
                         if (res.ok) {
                             history.push("/")
@@ -88,7 +83,7 @@ const EditStudentForm = () => {
         const requestOptions = {
             method: 'DELETE',
         }
-        fetch(DELETE_STUDENT_ENDPOINT, requestOptions).then(
+        fetch(STUDENTS_ENDPOINT, requestOptions).then(
             (res) => {
                 if (res.ok) {
                     history.push("/")

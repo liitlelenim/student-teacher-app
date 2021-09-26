@@ -17,16 +17,10 @@ const EditGradeForm = () => {
     const [descriptionInput, setDescriptionInput] = useState("");
 
     const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-    const API_GRADE_URL = process.env.REACT_APP_API_GRADE;
+    const API_GRADES_URL = process.env.REACT_APP_API_GRADES;
 
-    const PATCH_GRADE_ENDPOINT = API_BASE_URL + API_GRADE_URL
-        + `${gradeId}/` + process.env.REACT_APP_API_PATCH;
-
-    const GET_GRADE_ENDPOINT = API_BASE_URL + API_GRADE_URL +
-        `${gradeId}/` + process.env.REACT_APP_API_INFO;
-
-    const DELETE_GRADE_ENDPOINT = API_BASE_URL + API_GRADE_URL +
-        `${gradeId}/` + process.env.REACT_APP_API_DELETE;
+    const GRADES_ENDPOINT = API_BASE_URL + API_GRADES_URL
+        + `${gradeId}/`;
     useEffect(() => {
         const requestOptions = {
             method: 'GET',
@@ -34,7 +28,7 @@ const EditGradeForm = () => {
                 'Content-Type': 'application/json'
             }
         };
-        fetch(GET_GRADE_ENDPOINT, requestOptions)
+        fetch(GRADES_ENDPOINT, requestOptions)
             .then((res) => {
                 if (res.ok) {
                     return res.json();
@@ -42,7 +36,7 @@ const EditGradeForm = () => {
             }).then((json) => {
             setGradeData(json);
         })
-    }, [GET_GRADE_ENDPOINT]);
+    }, [GRADES_ENDPOINT]);
 
     useEffect(() => {
         if (gradeData !== undefined) {
@@ -77,7 +71,7 @@ const EditGradeForm = () => {
                     },
                     body: JSON.stringify({...patchBody})
                 }
-                fetch(PATCH_GRADE_ENDPOINT, requestOptions).then(
+                fetch(GRADES_ENDPOINT, requestOptions).then(
                     (res) => {
                         if (res.ok) {
                             history.push("/")
@@ -93,7 +87,7 @@ const EditGradeForm = () => {
         const requestOptions = {
             method: 'DELETE',
         }
-        fetch(DELETE_GRADE_ENDPOINT, requestOptions).then(
+        fetch(GRADES_ENDPOINT, requestOptions).then(
             (res) => {
                 if (res.ok) {
                     history.push("/")

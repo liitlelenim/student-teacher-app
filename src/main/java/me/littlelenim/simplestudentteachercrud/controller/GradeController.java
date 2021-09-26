@@ -10,22 +10,22 @@ import javax.validation.Valid;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/grades")
 @AllArgsConstructor
 public class GradeController {
     private final GradeService gradeService;
 
-    @GetMapping(value = "/grade/{id}/info")
-    public Grade getGrade(@PathVariable("id") Long id) {
+    @GetMapping(value = "/{id}")
+    public Grade getGrade(@PathVariable Long id) {
         return gradeService.getById(id);
     }
 
-    @PatchMapping(value = "/grade/{id}/patch")
-    public void patchGrade(@PathVariable("id") Long id, @RequestBody @Valid GradePatchDTO gradePatchDTO) {
+    @PatchMapping(value = "/{id}")
+    public void patchGrade(@PathVariable Long id, @RequestBody @Valid GradePatchDTO gradePatchDTO) {
         gradeService.patchGrade(id, gradePatchDTO);
     }
 
-    @DeleteMapping(value = "/grade/{id}/delete")
+    @DeleteMapping(value = "/{id}")
     public void deleteGrade(@PathVariable Long id) {
         gradeService.deleteById(id);
     }

@@ -13,39 +13,39 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/students")
 @AllArgsConstructor
 public class StudentController {
 
     private final StudentService studentService;
 
-    @GetMapping(value = "/all-students", produces = "application/json")
+    @GetMapping(produces = "application/json")
     public List<Student> getAllStudents() {
         return studentService.getAll();
     }
 
-    @GetMapping(value = "/student/{id}/info", produces = "application/json")
-    public Student getStudent(@PathVariable("id") Long id) {
+    @GetMapping(value = "/{id}", produces = "application/json")
+    public Student getStudent(@PathVariable Long id) {
         return studentService.getById(id);
     }
 
-    @PostMapping(value = "/student/{id}/add-grade")
+    @PostMapping(value = "/{id}/grades")
     public void addGradeToStudent(@RequestBody @Valid GradePostDTO gradePostDTO, @PathVariable Long id) {
         studentService.addGradeByStudentId(id, gradePostDTO);
     }
 
-    @PostMapping(value = "/create-student")
+    @PostMapping
     public void createStudent(@RequestBody @Valid StudentPostDTO studentPostDTO) {
         studentService.add(studentPostDTO);
     }
 
-    @DeleteMapping(value = "/student/{id}/delete")
+    @DeleteMapping(value = "/{id}")
     public void deleteStudent(@PathVariable Long id) {
         studentService.deleteById(id);
     }
 
-    @PatchMapping(value = "/student/{id}/patch")
-    public void patchGrade(@PathVariable("id") Long id,@RequestBody @Valid StudentPatchDTO studentPatchDTO){
+    @PatchMapping(value = "/{id}")
+    public void patchGrade(@PathVariable Long id,@RequestBody @Valid StudentPatchDTO studentPatchDTO){
         studentService.patchPersonalInfo(id, studentPatchDTO);
     }
 }

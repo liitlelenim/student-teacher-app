@@ -4,7 +4,7 @@ import {useRef, useState} from "react";
 import {useHistory} from 'react-router-dom'
 const CreateStudentForm = () => {
 
-    const POST_STUDENT_ENDPOINT = process.env.REACT_APP_API_BASE_URL + process.env.REACT_APP_API_CREATE_STUDENT;
+    const POST_STUDENT_ENDPOINT = process.env.REACT_APP_API_BASE_URL + process.env.REACT_APP_API_STUDENTS;
 
     const history = useHistory();
 
