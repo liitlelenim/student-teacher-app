@@ -1,17 +1,14 @@
 package me.littlelenim.simplestudentteachercrud.model;
 
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import me.littlelenim.simplestudentteachercrud.dto.GradePostDTO;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 
 @Entity
 @Table(name = "grade")
-@Data
-@NoArgsConstructor
 public class Grade {
 
     @SequenceGenerator(
@@ -36,6 +33,10 @@ public class Grade {
     @Column(name = "description")
     private String description;
 
+    public Grade() {
+
+    }
+
     public Grade(int value, int weight, String description) {
         this.value = value;
         this.weight = weight;
@@ -48,4 +49,47 @@ public class Grade {
         this.description = dto.getDescription();
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Grade grade)) return false;
+        return getValue() == grade.getValue() && getWeight() == grade.getWeight() && getId().equals(grade.getId()) && getDescription().equals(grade.getDescription());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getValue(), getWeight(), getDescription());
+    }
 }
