@@ -5,11 +5,13 @@ import {useRef, useState} from "react";
 
 const AddGradeForm = () => {
 
+    let sentRequest = false;
 
     let {studentId} = useParams();
     const history = useHistory();
 
     const creationForm = useRef();
+
 
     const [valueInput, setValueInput] = useState(0);
     const [weightInput, setWeightInput] = useState(0);
@@ -19,7 +21,8 @@ const AddGradeForm = () => {
         + `${studentId}/` + process.env.REACT_APP_API_GRADES;
 
     const addGrade = (event) => {
-        if (creationForm.current.reportValidity()) {
+        if (creationForm.current.reportValidity() && !sentRequest) {
+            sentRequest=true;
             event.preventDefault();
             const requestOptions = {
                 method: 'POST',
@@ -39,7 +42,9 @@ const AddGradeForm = () => {
                         history.push("/")
                     }
                 }
-            )
+            ).catch(()=>{
+                sentRequest=false;
+            })
         }
 
     }

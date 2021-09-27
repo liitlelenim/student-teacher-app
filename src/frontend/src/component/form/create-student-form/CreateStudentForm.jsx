@@ -2,10 +2,13 @@ import "../AppForm.css";
 import {Button, Col, Form, FormLabel} from "react-bootstrap";
 import {useRef, useState} from "react";
 import {useHistory} from 'react-router-dom'
+
 const CreateStudentForm = () => {
 
-    const POST_STUDENT_ENDPOINT = process.env.REACT_APP_API_BASE_URL + process.env.REACT_APP_API_STUDENTS;
 
+    let sentRequest = false;
+
+    const POST_STUDENT_ENDPOINT = process.env.REACT_APP_API_BASE_URL + process.env.REACT_APP_API_STUDENTS;
     const history = useHistory();
 
     const [firstNameInput, setFirstNameInput] = useState("");
@@ -14,23 +17,27 @@ const CreateStudentForm = () => {
     const creationForm = useRef();
 
     const createStudent = (event) => {
-        if(creationForm.current.reportValidity()) {
+        if (creationForm.current.reportValidity() && !sentRequest) {
+            sentRequest=true;
             event.preventDefault();
             const requestOptions = {
-                method:'POST',
-                headers:{
+                method: 'POST',
+                headers: {
                     'Content-Type': 'application/json'
                 },
-                body:JSON.stringify({
-                    firstName:firstNameInput,
-                    lastName:lastNameInput
+                body: JSON.stringify({
+                    firstName: firstNameInput,
+                    lastName: lastNameInput
                 })
             }
-            fetch(POST_STUDENT_ENDPOINT,requestOptions)
-                .then((res)=>{
-                    if(res.ok) {
+            fetch(POST_STUDENT_ENDPOINT, requestOptions)
+                .then((res) => {
+                    if (res.ok) {
                         history.push("/");
                     }
+                })
+                .catch(()=>{
+                    sentRequest=false;
                 })
 
         }
